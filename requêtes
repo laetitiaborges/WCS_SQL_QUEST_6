@@ -12,10 +12,15 @@ INNER JOIN team t
   ON p.team_id = t.id
 GROUP BY t.name
 HAVING nb_players >= 14
-ORDER BY t.name
+ORDER BY t.name;
 
 
-SELECT *
-FROM player
+SELECT enrollment_date, name, firstname, lastname
+FROM player p
+INNER JOIN team t
+  ON p.team_id = t.id
+INNER JOIN wizard w
+  ON p.wizard_id = w.id
 WHERE DAYOFWEEK(enrollment_date) = 2
+AND t.name = 'Gryffindor'
 ORDER BY enrollment_date;
